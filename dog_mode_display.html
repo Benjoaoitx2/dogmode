@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -20,7 +20,6 @@
       justify-content: center;
     }
 
-    /* Tutorial Page Styles */
     .tutorial-page {
       display: flex;
       flex-direction: column;
@@ -57,9 +56,15 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.25rem;
-      color: #666;
       margin-bottom: 1.5rem;
+      overflow: hidden;
+    }
+
+    .tutorial-image picture,
+    .tutorial-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
     }
 
     .tutorial-step-title {
@@ -98,7 +103,6 @@
       background-color: #0056CC;
     }
 
-    /* Main Dog Mode Styles */
     .dog-mode-page {
       display: none;
       width: 100%;
@@ -124,28 +128,27 @@
     }
 
     .image-placeholder {
-        flex: 1;
-        width: 50%;
-        height: 100vh;
-        background-image: url('./images/dog.png');
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.2rem;
-        color: #666;
-        margin-left: 5rem;
-        /* Square fade using layered linear gradients */
-        mask-image: 
-            linear-gradient(to top, transparent 0%, black 20%, black 80%, transparent 100%),
-            linear-gradient(to left, transparent 0%, black 25%, black 75%, transparent 100%);
-        -webkit-mask-image: 
-            linear-gradient(to top, transparent 0%, black 20%, black 80%, transparent 100%),
-            linear-gradient(to left, transparent 0%, black 25%, black 75%, transparent 100%);
-        mask-composite: intersect;
-        -webkit-mask-composite: intersect;
+      flex: 1;
+      width: 50%;
+      height: 100vh;
+      background-image: url('./images/dog.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      color: #666;
+      margin-left: 5rem;
+      mask-image:
+        linear-gradient(to top, transparent 0%, black 20%, black 80%, transparent 100%),
+        linear-gradient(to left, transparent 0%, black 25%, black 75%, transparent 100%);
+      -webkit-mask-image:
+        linear-gradient(to top, transparent 0%, black 20%, black 80%, transparent 100%),
+        linear-gradient(to left, transparent 0%, black 25%, black 75%, transparent 100%);
+      mask-composite: intersect;
+      -webkit-mask-composite: intersect;
     }
 
     .message-section {
@@ -213,7 +216,11 @@
     <div class="tutorial-steps">
       <div class="tutorial-step">
         <div class="tutorial-image">
-          Imagem do Passo 1
+          <picture>
+            <source srcset="./images/step1.avif" type="image/avif">
+            <source srcset="./images/step1.webp" type="image/webp">
+            <img src="./images/step1.png" alt="Passo 1" loading="lazy" />
+          </picture>
         </div>
         <div class="tutorial-step-title">Passo Um</div>
         <div class="tutorial-step-description">
@@ -223,7 +230,11 @@
 
       <div class="tutorial-step">
         <div class="tutorial-image">
-          Imagem do Passo 2
+          <picture>
+            <source srcset="./images/step2.avif" type="image/avif">
+            <source srcset="./images/step2.webp" type="image/webp">
+            <img src="./images/step2.png" alt="Passo 2" loading="lazy" />
+          </picture>
         </div>
         <div class="tutorial-step-title">Passo Dois</div>
         <div class="tutorial-step-description">
@@ -233,7 +244,11 @@
 
       <div class="tutorial-step">
         <div class="tutorial-image">
-          Imagem do Passo 3
+          <picture>
+            <source srcset="./images/step3.avif" type="image/avif">
+            <source srcset="./images/step3.webp" type="image/webp">
+            <img src="./images/step3.png" alt="Passo 3" loading="lazy" />
+          </picture>
         </div>
         <div class="tutorial-step-title">Passo Três</div>
         <div class="tutorial-step-description">
@@ -256,14 +271,14 @@
         <!-- Custom Image will show here -->
       </div>
       <div class="message-section">
-        <div class="main-message">My driver will be back soon</div>
-        <div class="sub-message">Don't worry!<br>The A/C is on.</div>
+        <div class="main-message">O meu dono volta já</div>
+        <div class="sub-message">Não se preocupe!<br>O ar condicionado está ligado.</div>
       </div>
     </div>
   </div>
 
   <script>
-    // Preload the dog image when the page loads
+    // Preload the dog image
     window.addEventListener('load', function() {
       const img = new Image();
       img.src = './images/dog.png';
@@ -272,14 +287,8 @@
     function showDogMode() {
       const tutorialPage = document.getElementById('tutorialPage');
       const dogModePage = document.getElementById('dogModePage');
-      
-      // Hide tutorial page
       tutorialPage.style.display = 'none';
-      
-      // Show dog mode page and trigger animation
       dogModePage.style.display = 'flex';
-      
-      // Trigger animation on next frame
       requestAnimationFrame(() => {
         dogModePage.classList.add('show');
       });
