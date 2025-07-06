@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dog Mode</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background-color: white;
+      color: black;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      max-width: 1200px;
+      align-items: center;
+      justify-content: center;
+      gap: 4rem;
+    }
+
+    .image-placeholder {
+        flex: 1;
+        width: 50%;
+        height: 100vh;
+        background-image: url('./images/dog.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        color: #666;
+        margin-left: 4rem;
+
+        /* Square fade using layered linear gradients */
+        mask-image: 
+            linear-gradient(to top, transparent 0%, black 25%, black 75%, transparent 100%),
+            linear-gradient(to left, transparent 0%, black 25%, black 75%, transparent 100%);
+        -webkit-mask-image: 
+            linear-gradient(to top, transparent 0%, black 25%, black 75%, transparent 100%),
+            linear-gradient(to left, transparent 0%, black 25%, black 75%, transparent 100%);
+        mask-composite: intersect;
+        -webkit-mask-composite: intersect;
+    }
+
+    .message-section {
+      flex: 1;
+      max-width: 500px;
+      text-align: left;
+      margin-right: 4rem;
+    }
+
+    .main-message {
+      font-size: 4.5rem;
+      font-weight: 600;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .sub-message {
+      font-size: 2.2rem;
+      font-weight: 400;
+      color: #333;
+      line-height: 1.3;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        gap: 2rem;
+        padding: 2rem;
+      }
+
+      .main-message {
+        font-size: 3rem;
+      }
+
+      .sub-message {
+        font-size: 1.4rem;
+      }
+
+      .image-placeholder {
+        height: 200px;
+        width: 100%;
+        margin-left: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="image-placeholder">
+      <!-- Custom Image will show here -->
+    </div>
+    <div class="message-section">
+      <div class="main-message">My driver will be back soon</div>
+      <div class="sub-message">Don't worry!<br>The A/C is on.</div>
+    </div>
+  </div>
+</body>
+</html>
