@@ -256,13 +256,19 @@
         <!-- Custom Image will show here -->
       </div>
       <div class="message-section">
-        <div class="main-message">O meu condutor voltará em breve</div>
-        <div class="sub-message">Não se preocupe!<br>O ar condicionado está ligado.</div>
+        <div class="main-message">My driver will be back soon</div>
+        <div class="sub-message">Don't worry!<br>The A/C is on.</div>
       </div>
     </div>
   </div>
 
   <script>
+    // Preload the dog image when the page loads
+    window.addEventListener('load', function() {
+      const img = new Image();
+      img.src = './images/dog.png';
+    });
+
     function showDogMode() {
       const tutorialPage = document.getElementById('tutorialPage');
       const dogModePage = document.getElementById('dogModePage');
